@@ -4,4 +4,9 @@
     <string name="section_format">Hello World from section: %1$d</string>
     <string name="title_activity_insert_debtor">Insert Debtor</string>
     <string name="finish">Finish</string>
+    <string name="insert_information">Insert Information</string>
+    <string name="amount">Amount</string>
+    <string name="name">Name</string>
+    <string name="number">Number</string>
+    <string name="residence">Residence</string>
 </resources>

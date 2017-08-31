@@ -48,7 +48,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public boolean InsertDataCred(String name, String phone_number, String loan_amount, String location){
+    public boolean InsertDataCred(String name, String phone_number, int loan_amount, String location){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
 
@@ -63,7 +63,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return result != -1;
     }
 
-    public boolean InsertDataDebt(String name, String phone_number, String loan_amount, String location){
+    public boolean InsertDataDebt(String name, String phone_number, int loan_amount, String location){
       SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
 

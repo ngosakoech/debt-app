@@ -4,11 +4,8 @@ import android.Manifest;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
-import android.support.annotation.IdRes;
-import android.support.annotation.RequiresApi;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -16,7 +13,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 import static android.provider.ContactsContract.Contacts;
@@ -44,7 +40,7 @@ public class InsertDataActivity extends AppCompatActivity {
     String name_string;
     String phoneNumberString;
     String residence_string;
-    String amount_int;
+    int amount_int;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,7 +83,7 @@ public class InsertDataActivity extends AppCompatActivity {
 
     }//OnCreate End
 
-    @RequiresApi(api = Build.VERSION_CODES.M)
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -181,7 +177,7 @@ public class InsertDataActivity extends AppCompatActivity {
         name_string = name.getText().toString().trim();
         phoneNumberString = phone_no.getText().toString().trim();
         residence_string = residence.getText().toString().trim();
-        amount_int = loan_amount.getText().toString().trim();
+        amount_int = Integer.parseInt(loan_amount.getText().toString().trim());
 
 
         if (rdgroup.getCheckedRadioButtonId() == -1) {
@@ -193,7 +189,7 @@ public class InsertDataActivity extends AppCompatActivity {
         else if (phoneNumberString.matches("")){
             phone_no.setError("Please fill in the blanks");
         }
-        else if (amount_int.matches("")){
+        else if (amount_int == 0 ){
             loan_amount.setError("Please fill in the blanks");
         }
         else if (rdgroup.getCheckedRadioButtonId() == R.id.rdDebtor) {
