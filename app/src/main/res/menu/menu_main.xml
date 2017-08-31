@@ -1,0 +1,24 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.madeni.niqoz.debtapplication.MainActivity">
+
+    <item
+        android:id="@+id/action_add"
+        android:icon="@drawable/ic_action_add_circle_outline"
+        android:title="Add transaction"
+        app:showAsAction="ifRoom"
+        />
+    <item
+        android:id="@+id/action_sort"
+        android:icon="@drawable/ic_action_sort"
+        android:title="Sort"
+        app:showAsAction="ifRoom"
+        />
+
+    <item
+        android:id="@+id/action_settings"
+        android:orderInCategory="100"
+        android:title="@string/action_settings"
+        app:showAsAction="never" />
+</menu>
