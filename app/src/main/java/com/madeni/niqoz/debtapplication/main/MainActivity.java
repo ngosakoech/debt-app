@@ -1,4 +1,4 @@
-package com.madeni.niqoz.debtapplication;
+package com.madeni.niqoz.debtapplication.main;
 
 import android.content.Intent;
 import android.support.design.widget.TabLayout;
@@ -14,6 +14,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import android.widget.Toast;
+
+import com.madeni.niqoz.debtapplication.data_handling.InsertDataActivity;
+import com.madeni.niqoz.debtapplication.R;
 
 public class MainActivity extends AppCompatActivity {
 

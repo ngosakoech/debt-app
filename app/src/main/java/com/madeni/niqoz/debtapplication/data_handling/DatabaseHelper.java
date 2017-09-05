@@ -1,9 +1,11 @@
-package com.madeni.niqoz.debtapplication;
+package com.madeni.niqoz.debtapplication.data_handling;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+
+import java.util.List;
 
 /**
  * Created by niqoz on 8/12/2017.
@@ -48,35 +50,43 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public boolean InsertDataCred(String name, String phone_number, int loan_amount, String location){
+    // <=============================================< insertion functions >===========================================>
+
+    public boolean InsertDataCred(String name, String phone_number, int loan_amount, String location,int paid_amount,int remain_amount){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
 
         contentValues.put(col_name,name);
         contentValues.put(col_location,location);
         contentValues.put(col_Lamount,loan_amount);
-       // contentValues.put(col_Pamount,paid_amount);
-       // contentValues.put(col_Ramount,remain_amount);
         contentValues.put(col_number,phone_number);
+       contentValues.put(col_Pamount,paid_amount);
+       contentValues.put(col_Ramount,remain_amount);
+
         long result = db.insert(TABLE_NAME_CRED,null,contentValues);
 
         return result != -1;
     }
 
-    public boolean InsertDataDebt(String name, String phone_number, int loan_amount, String location){
+    public boolean InsertDataDebt(String name, String phone_number, int loan_amount, String location, int paid_amount,int remain_amount){
       SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
 
         contentValues.put(col_name,name);
         contentValues.put(col_location,location);
         contentValues.put(col_Lamount,loan_amount);
-        //contentValues.put(col_Pamount,paid_amount);
-        //contentValues.put(col_Ramount,remain_amount);
         contentValues.put(col_number,phone_number);
+
+        contentValues.put(col_Pamount,paid_amount);
+        contentValues.put(col_Ramount,remain_amount);
+
         long result = db.insert(TABLE_NAME_DEBT,null,contentValues);
 
         return result != -1;
     }
+    // <=============================================< Insertion functions >===========================================>
+
+
 
 
 }

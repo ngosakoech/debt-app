@@ -1,4 +1,4 @@
-package com.madeni.niqoz.debtapplication;
+package com.madeni.niqoz.debtapplication.data_handling;
 
 import android.Manifest;
 import android.content.Intent;
@@ -15,6 +15,9 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
+
+import com.madeni.niqoz.debtapplication.R;
+
 import static android.provider.ContactsContract.Contacts;
 
 
@@ -41,6 +44,8 @@ public class InsertDataActivity extends AppCompatActivity {
     String phoneNumberString;
     String residence_string;
     int amount_int;
+    int paid_amount;
+    int remaining_amount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,7 +88,7 @@ public class InsertDataActivity extends AppCompatActivity {
 
     }//OnCreate End
 
-
+    // <=============================================< CONTACT FUNCTIONS >===========================================>
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -98,8 +103,6 @@ public class InsertDataActivity extends AppCompatActivity {
         }
     }
 
-
-    // <=============================================< CONTACT FUNCTIONS >===========================================>
     private void retrieveContactNumber() {
 
         String contactNumber = null;
@@ -179,6 +182,8 @@ public class InsertDataActivity extends AppCompatActivity {
         residence_string = residence.getText().toString().trim();
         amount_int = Integer.parseInt(loan_amount.getText().toString().trim());
 
+        paid_amount = 0;
+        remaining_amount = amount_int - paid_amount;
 
         if (rdgroup.getCheckedRadioButtonId() == -1) {
             Toast.makeText(getApplicationContext(), "Select one of the options", Toast.LENGTH_LONG).show();
@@ -193,7 +198,7 @@ public class InsertDataActivity extends AppCompatActivity {
             loan_amount.setError("Please fill in the blanks");
         }
         else if (rdgroup.getCheckedRadioButtonId() == R.id.rdDebtor) {
-            boolean isInserted = helper.InsertDataDebt(name_string, phoneNumberString, amount_int, residence_string);
+            boolean isInserted = helper.InsertDataDebt(name_string, phoneNumberString, amount_int, residence_string,paid_amount, remaining_amount);
             if (!isInserted) {
                 Toast.makeText(getApplicationContext(), "Data could not be inserted", Toast.LENGTH_SHORT).show();
             } else {
@@ -204,7 +209,7 @@ public class InsertDataActivity extends AppCompatActivity {
             }
         }
         else if (rdgroup.getCheckedRadioButtonId() == R.id.rdCreditor) {
-            Boolean isInserted = helper.InsertDataCred(name_string, phoneNumberString, amount_int, residence_string);
+            Boolean isInserted = helper.InsertDataCred(name_string, phoneNumberString, amount_int, residence_string,paid_amount, remaining_amount);
             if (!isInserted) {
                 Toast.makeText(getApplicationContext(), "Data could not be inserted", Toast.LENGTH_SHORT).show();
             } else {
