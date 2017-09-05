@@ -7,11 +7,14 @@ package com.madeni.niqoz.debtapplication.adapters;
 public class getDebtors {
     private String name, amount, remaining_amount;
 
-
     public getDebtors(String name, String amount, String remaining_amount) {
         this.name = name;
         this.amount = amount;
         this.remaining_amount = remaining_amount;
+
+
+
+
     }
 
     public String getName() {
